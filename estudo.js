@@ -31,4 +31,46 @@ function multiplica(){
         document.write("<br>");
     }
 }
+function moeda(atual){
+    return atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+function total(){
+    let v = document.getElementById("valor").value;
+    let j = document.getElementById("juros").value;
+    let t = document.getElementById("meses").value;
+    
+    if(!Number(v)){
+        alert("O valor deve ser numérico.");
+        document.getElementById("valor").value = "";
+        document.getElementById("valor").focus();
+        return
+    }
+
+    if(!Number(v)){
+        alert("O valor deve ser numérico.");
+        document.getElementById("valor").value = "";
+        document.getElementById("valor").focus();
+        return
+    }
+    if(!Number(j)){
+        alert("Os juros devem ser numérico.");
+        document.getElementById("juros").value = "";
+        document.getElementById("juros").focus();
+        return
+    }
+    if(!Number(t)){
+        alert("O valor dos meses deve ser numérico.");
+        document.getElementById("meses").value = "";
+        document.getElementById("meses").focus();
+        return
+    }
+
+    let r = 0;
+    for(let i=1; i <= t;i++){
+         r = v * (1+(j/100));
+         document.write("Mês " + " valor: " + moeda(r) + "<br>");
+         v = r;
+    }
+    document.write("resultado: " + moeda(r));
+}
 
