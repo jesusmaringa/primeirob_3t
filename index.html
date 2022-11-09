@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeiro B</title>
+    <title>Primeiro G</title>
     <script src="estudo.js"></script>
     <link rel="stylesheet" href="geral.css">
 </head>
 
 <body>
+    <div class="calc">
+        <div id="spTotal">
+            <span id="total">R$ 0,00</span>
+        </div>
+        Capital: <input id="capital" type="text"><br>
+        Juros mensais: <input id="juros" type="text"><br>
+        Quantidade de meses: <input id="meses" type="text"><br>
+        <button onclick="total()">Calcular</button>
+        <div id="spLista">
+            <span id="listaMes"></span>
+        </div>
+    </div>
 
-    <body>
-        <div class="calculadora">
-            <div id="sptotalgeral">
-                <span id="totalgeral">Total: 0,00</span><br>
-            </div>
-            Valor: <input id="valor" placeholder="R$" type="text"><br>
-            Juros(mensais): <input id="juros" placeholder="% mês" type="text"><br>
-            Nr messes : <input id="messes" placeholder="Tempo" type="text"><br>
-            <button onclick="total()">Enviar</button>
+    <div class="calcESG">
+        <div class="spRaiz">
+            <span id="raiz">x1:?  x2:?</span>
         </div>
-        <div>
-            <span id="mes">meses</span>
-        </div>
-    </body>
+        a: <input id="a" type="text"> <br>
+        b: <input id="b" type="text"> <br>
+        c: <input id="c" type="text"> <br>
+        <button onclick="calculaRaiz()">Calcula</button>
+    </div>
+
+</body>
 
 </html>

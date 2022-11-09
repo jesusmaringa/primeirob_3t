@@ -1,76 +1,51 @@
-let tabuada = 111;
-function escreva(){
-    document.write("Tabuada do " + tabuada + "<br>");
-    document.write(tabuada + " x 1 = " + (tabuada*1) + "<br>");
-    document.write(tabuada + " x 2 = " + (tabuada*2) + "<br>");
-    document.write(tabuada + " x 3 = " + (tabuada*3) + "<br>");
-    document.write(tabuada + " x 4 = " + (tabuada*4) + "<br>");
-    document.write(tabuada + " x 5 = " + (tabuada*5) + "<br>");
-    document.write(tabuada + " x 6 = " + (tabuada*6) + "<br>");
-    document.write(tabuada + " x 7 = " + (tabuada*7) + "<br>");
-    document.write(tabuada + " x 8 = " + (tabuada*8) + "<br>");
-    document.write(tabuada + " x 9 = " + (tabuada*9) + "<br>");
-    document.write(tabuada + " x 10 = " + (tabuada*10) + "<br>");
-}
-
-let lista = ["Jesus","Spessato","Duarte","Jorge","Neuza","Gilmar","Jossyara"];
-
-function mostraLista(){
-    document.write("Tamanho da lista: " + lista.length + "<br>");
-    for(let i = 0; i < lista.length; i++){
-        document.write("Professor: " + lista[i] + "<br>");
-    }
-}
-
-function multiplica(){
-    for(let i = 6; i <= 8; i++){
-        document.write("Tabuada do " + i + "<br>");
-        for(let j = 1; j <= 10; j++){
-            document.write(i + " x "+j+" = " + (i*j) + "<br>");
-        }
-        document.write("<br>");
-    }
-}
-function moeda(atual){
-    return atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-}
 function total(){
-    let v = document.getElementById("valor").value;
+    let c = document.getElementById("capital").value;
     let j = document.getElementById("juros").value;
     let t = document.getElementById("meses").value;
-    
-    if(!Number(v)){
-        alert("O valor deve ser numérico.");
-        document.getElementById("valor").value = "";
-        document.getElementById("valor").focus();
-        return
-    }
-
-    if(!Number(v)){
-        alert("O valor deve ser numérico.");
-        document.getElementById("valor").value = "";
-        document.getElementById("valor").focus();
-        return
+    if(!Number(c)){
+        alert("O valor do capital deve ser um número.");
+        document.getElementById("capital").value = "";
+        document.getElementById("capital").focus();
+        return 
     }
     if(!Number(j)){
-        alert("Os juros devem ser numérico.");
+        alert("O valor dos juros deve ser um número.");
         document.getElementById("juros").value = "";
         document.getElementById("juros").focus();
-        return
+        return 
     }
     if(!Number(t)){
-        alert("O valor dos meses deve ser numérico.");
+        alert("A quantidade de meses deve ser um número.");
         document.getElementById("meses").value = "";
         document.getElementById("meses").focus();
-        return
+        return 
     }
+    let m = 0;
+    for(let i = 1; i <= t; i++){
+        m = c * (1 + (j/100));
+        //document.write("Valor no mês " + i + " = " + m + "<br>");
+        c = m;
+    }
+    document.getElementById("total").innerHTML = m;
+    //document.write("Montante: " + m);
+}
 
-    let r = 0;
-    for(let i=1; i <= t;i++){
-         r = v * (1+(j/100));
-         document.write("Mês " + " valor: " + moeda(r) + "<br>");
-         v = r;
+function calculaRaiz(){
+    let a = document.getElementById("a").value;
+    let b = document.getElementById("b").value;
+    let c = document.getElementById("c").value;
+    //ax2 + bx + c = 0
+    let delta = (b*b) - (4*a*c);
+
+    if (delta < 0){
+        document.getElementById("raiz").innerHTML = "Não possui raiz real";
+    } else if (delta == 0){
+        let x1 = (-b)/(2*a);
+        document.getElementById("raiz").innerHTML = "x1 = x2 = " + x1;
+    } else {
+        let x1 = ((-b) + Math.sqrt(delta))/(2*a);
+        let x2 = ((-b) - Math.sqrt(delta))/(2*a);
+        document.getElementById("raiz").innerHTML = "x1 = " + x1 + " x2 = " + x2;
     }
-    document.write("resultado: " + moeda(r));
 }
 
